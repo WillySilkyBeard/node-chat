@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Chat nodejs</title>
+</head>
+<body>
+    <div id="app" class="app">
+        <div class="chat">
+            <div class="chat-users collection">
+                <a class="collection-item"
+                v-for="u in users"
+                :class="{'active': u.id === user.id}"
+                >{{u.name}}
+                </a>
+            </div>
+            <div ref="messages" class="chat-messages">
+                    <chat-message
+                    v-for="(m, idx) in messages"
+                    :message="m"
+                    :user="user"
+                    :key="idx"
+                    ></chat-message>
+                
+            </div>
+        </div>
+        <div class="actions">
+            <div class="input-field">
+                <input 
+                type="text" 
+                placeholder="Type your message.."
+                v-model.trim="message"
+                autofocus
+                autocomplete="false"
+                @keydown.enter="sendMessage"
+                >
+            </div>
+            <button 
+            class="btn"
+            @click="sendMessage"
+            :disabled="message.length === 0"
+            >Send</button>
+        </div>
+    </div>
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

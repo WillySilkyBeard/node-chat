@@ -1,0 +1,25 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "nodejs & vuejs & socket.io",
+  "main": "server.js",
+  "engines": {
+    "node": "10.15.1"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "keywords": [
+    "chat",
+    "socket.io",
+    "vuejs",
+    "nodejs"
+  ],
+  "author": "WillySilkyBeard",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  }
+}
